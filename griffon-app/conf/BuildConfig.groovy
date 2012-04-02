@@ -2,17 +2,17 @@ griffon.project.dependency.resolution = {
     inherits("global") 
     log "warn" 
     repositories {
-        griffonPlugins()
         griffonHome()
-        griffonCentral()
         mavenCentral()
     }
     dependencies {
-        compile 'net.sf.jung:jung-api:2.0.1',
-                'net.sf.jung:jung-io:2.0.1',
-                'net.sf.jung:jung-jai:2.0.1',
-                'net.sf.jung:jung-algorithms:2.0.1',
-                'net.sf.jung:jung-visualization:2.0.1'
+        String jungVersion = '2.0.1'
+        compile "net.sf.jung:jung-api:$jungVersion",
+                "net.sf.jung:jung-io:$jungVersion",
+                "net.sf.jung:jung-graph-impl:$jungVersion",
+                "net.sf.jung:jung-jai:$jungVersion",
+                "net.sf.jung:jung-algorithms:$jungVersion",
+                "net.sf.jung:jung-visualization:$jungVersion"
     }
 }
 
@@ -24,5 +24,16 @@ griffon {
     }
 }
 
-griffon.jars.destDir='target/addon'
-griffon.plugin.pack.additional.sources = ['src/gdsl']
+log4j = {
+    // Example of changing the log pattern for the default console
+    // appender:
+    appenders {
+        console name: 'stdout', layout: pattern(conversionPattern: '%d [%t] %-5p %c - %m%n')
+    }
+
+    error 'org.codehaus.griffon',
+          'org.springframework',
+          'org.apache.karaf',
+          'groovyx.net'
+    warn  'griffon'
+}

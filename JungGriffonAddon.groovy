@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2010 the original author or authors.
+ * Copyright 2009-2012 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import griffon.jung.builder.factory.*
+
+import griffon.plugins.jung.builder.factory.*
 
 import edu.uci.ics.jung.graph.Forest
 import edu.uci.ics.jung.visualization.*
@@ -21,10 +22,10 @@ import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse
 import edu.uci.ics.jung.algorithms.layout.*
 
 /**
- * @author Andres.Almiray
+ * @author Andres Almiray
  */
 class JungGriffonAddon {
-    def factories = [
+    Map factories = [
         "basicVisualizationViewer": new VisualizationViewerFactory(BasicVisualizationServer),
         "visualizationViewer": new VisualizationViewerFactory(VisualizationViewer),
         "balloonLayout": new LayoutFactory(BalloonLayout, Forest),
